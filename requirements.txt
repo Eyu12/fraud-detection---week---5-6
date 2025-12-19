@@ -1,0 +1,61 @@
+# Core Data Science
+numpy
+pandas
+scipy
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Machine Learning
+scikit-learn
+imbalanced-learn
+xgboost
+lightgbm
+catboost
+
+# Model Explainability
+shap
+lime
+eli5
+
+# Utilities
+joblib
+pyarrow
+fastparquet
+tqdm
+ipywidgets
+ipython
+
+# Jupyter/Notebook
+jupyter
+jupyterlab
+notebook
+nbconvert
+ipykernel
+
+# Testing
+pytest
+pytest-cov
+pytest-xdist
+flake8
+black
+isort
+mypy
+
+# Documentation
+sphinx
+numpydoc
+pydocstyle
+
+# Optional - Web Dashboard
+streamlit
+dash
+plotly-express
+
+# Optional - Database/API
+sqlalchemy
+fastapi
+uvicorn
+requests
