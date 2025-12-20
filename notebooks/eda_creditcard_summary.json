@@ -1,0 +1,44 @@
+{
+  "dataset_info": {
+    "total_samples": 283726,
+    "fraud_samples": 473,
+    "legitimate_samples": 283253,
+    "fraud_rate": "0.1667%",
+    "imbalance_ratio": "599:1",
+    "features": "34 (28 PCA components + Time + Amount + Class)"
+  },
+  "key_findings": {
+    "class_imbalance": "Extreme class imbalance - typical for credit card fraud",
+    "amount_distribution": "Most transactions are small amounts, fraud amounts vary",
+    "temporal_patterns": [
+      "Clear temporal patterns in fraud occurrence",
+      "Hour-of-day variations in fraud rates",
+      "Some periods show clustering of fraud"
+    ],
+    "pca_insights": [
+      "PCA components show clear separation between fraud and legitimate",
+      "Some components have strong correlation with fraud",
+      "Multiple components contribute to fraud detection"
+    ],
+    "outlier_insights": [
+      "Outliers exist in both amount and PCA components",
+      "Fraud rate in outliers differs from overall rate",
+      "Outliers need careful handling in modeling"
+    ]
+  },
+  "data_quality": {
+    "missing_values": "No missing values detected",
+    "duplicates": "Checked and removed if present",
+    "data_types": "All features are numerical",
+    "scale": "Features are already scaled (PCA components)",
+    "time_format": "Time represents seconds from first transaction"
+  },
+  "recommendations_for_modeling": [
+    "Extreme class imbalance requires specialized techniques (SMOTE, class weights)",
+    "Use Time and Amount features along with PCA components",
+    "Consider creating time-based features (hour of day, time since last transaction)",
+    "Use appropriate evaluation metrics (PR-AUC, F1-Score, Recall)",
+    "Consider anomaly detection approaches given the imbalance",
+    "Feature scaling not needed for PCA components"
+  ]
+}
