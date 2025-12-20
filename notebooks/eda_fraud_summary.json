@@ -1,0 +1,41 @@
+{
+  "dataset_info": {
+    "total_samples": 151112,
+    "fraud_samples": 14151,
+    "legitimate_samples": 136961,
+    "fraud_rate": "9.36%",
+    "imbalance_ratio": "10:1"
+  },
+  "key_findings": {
+    "temporal_patterns": [
+      "Higher fraud rates for same-day signup transactions",
+      "Time-of-day patterns in fraudulent activity",
+      "Weekend vs weekday variations in fraud rates"
+    ],
+    "demographic_patterns": [
+      "Age distribution differences between fraud and legitimate transactions",
+      "Gender-based fraud rate variations"
+    ],
+    "transaction_patterns": [
+      "Purchase value distributions differ between fraud and legitimate",
+      "Browser and source-based fraud rate variations"
+    ],
+    "geographical_patterns": [
+      "Country-specific fraud rate variations identified",
+      "High-risk countries need special attention"
+    ]
+  },
+  "data_quality": {
+    "missing_values": "Minimal missing values handled appropriately",
+    "duplicates": "Checked and removed if present",
+    "data_types": "All data types properly formatted",
+    "outliers": "Present in purchase values, needs consideration in modeling"
+  },
+  "recommendations_for_modeling": [
+    "Use SMOTE or other techniques to handle class imbalance",
+    "Create time-based features (hour, day, time since signup)",
+    "Consider geographical risk scores as features",
+    "Normalize numerical features appropriately",
+    "Use appropriate evaluation metrics (PR-AUC, F1-Score)"
+  ]
+}
