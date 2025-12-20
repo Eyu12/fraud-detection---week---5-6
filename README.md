@@ -109,6 +109,7 @@ Inadequate preprocessing can result in high false positives that frustrate users
 - Model deployment considerations for real-time fraud detection systems
 
 ## Project Structure ( Task 1)  
+```bash
 data/
 ├── raw/
 │   ├── Fraud_Data.csv
