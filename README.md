@@ -108,19 +108,138 @@ Inadequate preprocessing can result in high false positives that frustrate users
 - **Task 3:** Model explainability using SHAP and business interpretation  
 - Model deployment considerations for real-time fraud detection systems
 
-## Project Structure ( Task 1)  
-```bash
-data/
-├── raw/
-│   ├── Fraud_Data.csv
-│   ├── IpAddress_to_Country.csv
-│   └── creditcard.csv
-│
-└── processed/
-    ├── fraud_data_processed.csv
-    └── creditcard_processed.csv
+# Task 2 – Model Building and Training
 
-notebooks/
-├── eda-fraud-data.ipynb
-├── eda-creditcard.ipynb
-├── feature-engineering.ipynb
+## Objective
+The objective of this task is to build, train, and evaluate classification models for detecting fraudulent transactions. Special attention is given to **imbalanced datasets** and selecting an optimal model based on both **performance** and **interpretability**.
+
+---
+
+## Datasets
+Two datasets are used:
+
+- **creditcard.csv**  
+  - Target variable: `Class`  
+  - `0` → Non-fraudulent transaction  
+  - `1` → Fraudulent transaction  
+
+- **Fraud_Data.csv**  
+  - Target variable: `class`  
+  - `0` → Legitimate transaction  
+  - `1` → Fraudulent transaction  
+
+---
+
+## Data Preparation
+1. **Feature–Target Separation**  
+   Independent variables (`X`) are separated from the target variable (`y`).
+
+2. **Stratified Train-Test Split**  
+   Data is split into training and testing sets using a **stratified split** to preserve class distribution.  
+   Default split ratio: 80% training, 20% testing.
+
+3. **Imbalanced Data Handling**  
+   Techniques such as **SMOTE** or class-weighted learning are applied where appropriate.
+
+---
+
+## Baseline Model: Logistic Regression
+A Logistic Regression model is trained as a **baseline** due to its simplicity and interpretability.
+
+**Evaluation Metrics**:
+- AUC-PR (Area Under Precision–Recall Curve)  
+- F1-Score  
+- Confusion Matrix  
+
+---
+
+## Ensemble Model
+An ensemble-based classifier is trained to improve predictive performance.
+
+**Model Options**:
+- Random Forest  
+- XGBoost  
+- LightGBM  
+
+**Hyperparameter Tuning**:
+- `n_estimators`  
+- `max_depth`  
+- Other model-specific parameters as needed  
+
+**Evaluation Metrics** (same as baseline):
+- AUC-PR  
+- F1-Score  
+- Confusion Matrix  
+
+---
+
+## Cross-Validation
+- **Stratified K-Fold Cross-Validation** (k = 5)  
+- Preserves class distribution in each fold  
+
+**Reported Results**:
+- Mean performance across folds  
+- Standard deviation of metrics  
+
+---
+
+## Model Comparison and Selection
+All trained models are compared side-by-side using:
+
+- AUC-PR  
+- F1-Score  
+- Confusion Matrix  
+- Cross-validation statistics (mean ± standard deviation)  
+
+**Model Selection Criteria**:
+- Predictive performance  
+- Stability across folds  
+- Interpretability and deployment suitability  
+
+A clear justification is provided for the chosen model.
+
+---
+
+## Outputs
+- Trained models  
+- Evaluation metrics and plots  
+- Cross-validation results  
+- Final model selection summary  
+
+---
+
+## Conclusion
+This task demonstrates a structured approach to fraud detection modeling, balancing **performance**, **robustness**, and **interpretability**, while addressing challenges posed by highly imbalanced datasets.
+
+
+## Project Structure 
+```bash
+# Create the complete project structure
+fraud-detection/
+├── .vscode/
+│   └── settings.json
+├── .github/
+│   └── workflows/
+│       └── unittests.yml
+├── data/                           # Add this folder to .gitignore
+│   ├── raw/                      # Original datasets
+│   └── processed/         # Cleaned and feature-engineered data
+├── notebooks/
+│   ├── __init__.py
+│   ├── eda-fraud-data.ipynb
+│   ├── eda-creditcard.ipynb
+│   ├── feature-engineering.ipynb
+│   ├── modeling.ipynb
+│   ├── shap-explainability.ipynb
+│   └── README.md
+├── src/
+│   ├── __init__.py
+├── tests/
+│   ├── __init__.py
+├── models/                      # Saved model artifacts
+├── scripts/
+│   ├── __init__.py
+│   └── README.md
+├── requirements.txt
+├── README.md
+└── .gitignore
