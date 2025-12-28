@@ -6,6 +6,8 @@ Task 1 focuses on preparing high-quality, feature-rich datasets for fraud detect
 
 This task establishes a strong foundation for machine learning modeling, explainability, and business-driven evaluation in later stages of the project.
 
+---
+
 ## Business Context  
 Adey Innovations Inc. operates in the financial technology sector, where fraud detection accuracy directly affects:  
 - Financial loss prevention  
@@ -13,6 +15,8 @@ Adey Innovations Inc. operates in the financial technology sector, where fraud d
 - Transaction security and monitoring efficiency  
 
 Inadequate preprocessing can result in high false positives that frustrate users or false negatives that lead to direct financial losses. Therefore, this task emphasizes data integrity, meaningful feature engineering, and imbalance-aware preparation.
+
+---
 
 ## Datasets Used  
 
@@ -49,6 +53,8 @@ Inadequate preprocessing can result in high false positives that frustrate users
 - Integrate geolocation data using IP range matching  
 - Transform features for machine learning readiness  
 - Handle class imbalance using appropriate resampling techniques
+
+---
 
 ## Methodology  
 
@@ -91,6 +97,7 @@ Inadequate preprocessing can result in high false positives that frustrate users
    - Class distributions documented before and after resampling  
    - SMOTE chosen to preserve minority class information while maintaining sufficient legitimate transaction data  
 
+---
 
 ## Outputs  
 - Cleaned and feature-engineered datasets saved in `data/processed/`  
@@ -107,6 +114,8 @@ Inadequate preprocessing can result in high false positives that frustrate users
 - **Task 2:** Model training and evaluation using imbalance-aware metrics  
 - **Task 3:** Model explainability using SHAP and business interpretation  
 - Model deployment considerations for real-time fraud detection systems
+
+---
 
 # Task 2 – Model Building and Training
 
@@ -210,6 +219,144 @@ A clear justification is provided for the chosen model.
 
 ## Conclusion
 This task demonstrates a structured approach to fraud detection modeling, balancing **performance**, **robustness**, and **interpretability**, while addressing challenges posed by highly imbalanced datasets.
+
+# Task 3 – Model Explainability
+
+## Objective
+
+Interpret the predictions of the best-performing fraud detection model using **SHAP (SHapley Additive exPlanations)** to understand the key drivers of fraud and translate insights into actionable business recommendations.
+
+---
+
+## Overview
+
+This task focuses on model transparency and interpretability through:
+
+1. Baseline feature importance analysis  
+2. SHAP-based global and local explanations  
+3. Interpretation of results  
+4. Business-focused recommendations  
+
+---
+
+## 1. Feature Importance Baseline
+
+### Purpose
+To obtain an initial understanding of feature influence using the model’s built-in feature importance.
+
+### Steps
+- Extract feature importance from the trained ensemble model (e.g., Random Forest, XGBoost).
+- Rank features by importance score.
+- Visualize the **top 10 most important features** using a bar chart.
+
+### Output
+- Feature importance values
+- Bar plot of top 10 features
+
+---
+
+## 2. SHAP Analysis
+
+### Why SHAP?
+SHAP provides:
+- Global interpretability (overall feature importance)
+- Local interpretability (individual prediction explanations)
+- Consistent and theoretically grounded explanations
+
+---
+
+### 2.1 SHAP Summary Plot (Global)
+
+#### Objective
+Identify the most influential features across all predictions.
+
+#### Deliverable
+- SHAP summary (beeswarm) plot showing:
+  - Feature importance ranking
+  - Direction of impact (positive or negative)
+  - Distribution of SHAP values
+
+---
+
+### 2.2 SHAP Force Plots (Local)
+
+#### Objective
+Explain individual transaction-level predictions.
+
+#### Required Cases
+Generate SHAP force plots for:
+
+1. **True Positive (TP)**  
+   - Fraud correctly detected
+
+2. **False Positive (FP)**  
+   - Legitimate transaction incorrectly flagged as fraud
+
+3. **False Negative (FN)**  
+   - Fraud transaction missed by the model
+
+#### Focus
+- Features pushing the prediction toward fraud
+- Features pushing the prediction toward non-fraud
+- Final decision rationale
+
+---
+
+## 3. Interpretation
+
+### 3.1 Feature Importance Comparison
+- Compare built-in model feature importance with SHAP global importance.
+- Identify overlapping and divergent influential features.
+
+### 3.2 Key Fraud Drivers
+- Identify the **top 5 features** driving fraud predictions based on SHAP values.
+- Explain:
+  - Direction of impact
+  - Magnitude of influence
+  - Business or domain relevance
+
+### 3.3 Surprising or Counterintuitive Findings
+- Features expected to be important but showing low SHAP impact
+- Legitimate behavior patterns contributing to false positives
+- Fraud cases missed due to feature interactions
+
+---
+
+## 4. Business Recommendations
+
+### Objective
+Translate explainability insights into **actionable fraud prevention strategies**.
+
+### Requirements
+- Provide at least **three recommendations**
+- Each recommendation must:
+  - Be specific and actionable
+  - Be supported by SHAP insights
+  - Address fraud risk or operational efficiency
+
+### Example Recommendations
+
+1. **Enhanced Verification for New Accounts**  
+   Transactions occurring shortly after account creation show high SHAP impact.  
+   *Recommendation:* Apply additional verification for transactions within the first X hours of signup.
+
+2. **Dynamic Controls for High-Value Transactions**  
+   Transaction amount is a strong fraud driver.  
+   *Recommendation:* Use adaptive risk thresholds for high-value transactions.
+
+3. **Manual Review for Borderline Cases**  
+   False positives often show mixed SHAP signals.  
+   *Recommendation:* Route transactions with moderate SHAP risk scores to manual review.
+
+---
+
+## Conclusion
+
+This task demonstrates how SHAP improves model transparency by:
+- Explaining global and local prediction behavior
+- Validating model decision logic
+- Identifying causes of false positives and false negatives
+- Enabling data-driven and explainable business decisions
 
 
 ## Project Structure 
